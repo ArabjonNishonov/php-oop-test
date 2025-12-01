@@ -1,9 +1,10 @@
 <?php
 
-class Car
+abstract class Car
 {
     public $model;
     public $year;
+    protected $km;
     public function drive()
     {
         return 'driving';
@@ -24,24 +25,20 @@ class Car
     public function getYear(){
         return $this->year;
     }
-
+    abstract public function getDrive();
 }
-
-$bmw = new Car();
-$bmw->model = "bmw";
-$bmw->year = 2012;
 
 class ElectricCar extends Car
 {
-    public $battary;
 
-    public function charge(){
-        return 'charging';
+    public function getDrive(){
+        return 'electric driving';
+    }
+    public function test(){
+        return 'test';
     }
 }
 
-$tesla = new ElectricCar();
+$testCar = new ElectricCar();
 
-var_dump($tesla);
-//var_dump($bmw->getModel($bmw));
-//var_dump($bmw);
+var_dump($testCar->getDrive());
